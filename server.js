@@ -1,5 +1,8 @@
 const express = require('express');
 const app = express();
+const databaseConnection = require('./config/dbConfig');
+
+databaseConnection();
 
 app.use(express.urlencoded({
     extended: true
