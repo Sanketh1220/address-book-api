@@ -67,6 +67,16 @@ class AddressBookModel {
             return((error) ? (callBack(error, null)) : (callBack(null, data)));
         })
     }
+
+    /**
+     * @description function written to get all info from address book
+     * @param {*} callBack 
+     */
+    findAll(callBack) {
+        AddressBookInfoModel.find({}, (error, data) => {
+            return((error) ? (callBack(error, null)) : (callBack(null, data)));
+        })
+    }
 }
 
 module.exports = new AddressBookModel();

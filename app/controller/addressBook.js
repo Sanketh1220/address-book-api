@@ -17,6 +17,12 @@ class AddressBookController {
             return ((error) ? res.status(500).send({success: false, message: "Some error occurred while creating contact to address book"}) : res.send({success: true, message: "Contact created successfully!", data: data}));
         })
     }
+
+    getAllDataApi(req, res) {
+        addressBookService.getAllInfoAddressBook((error, data) => {
+            return ((error) ? res.status(500).send({success: false, message: "Some error occurred while retrieving data"}) : res.send({success: true, message: "Address Book data successfully retrieved!", data: data}));
+        });
+    }
 }
 
 module.exports = new AddressBookController();

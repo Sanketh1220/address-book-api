@@ -11,6 +11,16 @@ class AddressBookService {
             return ((error) ? (callBack(error, null)) : (callBack(null, data)));
         });
     }
+
+    /**
+     * @description function written to retrieve all data from database
+     * @param {*} callBack 
+     */
+    getAllInfoAddressBook(callBack) {
+        addressBookModel.findAll((error, data) => {
+            return ((error) ? callBack(error.null) : callBack(null, data));
+        });
+    }
 }
 
 module.exports = new AddressBookService();
