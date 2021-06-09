@@ -96,7 +96,7 @@ class AddressBookModel {
      * @param {*} callBack 
      */
     updateInfo(addressBookId, addressBookData, callBack) {
-        AddressBookInfoModel.findByIdAndUpdate(addressBookData.addressBookId, {
+        AddressBookInfoModel.findByIdAndUpdate(addressBookId.addressBookId, {
             firstName: addressBookData.firstName,
             lastName: addressBookData.lastName,
             address: addressBookData.address,

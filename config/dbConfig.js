@@ -1,3 +1,5 @@
+require('dotenv').config();
+require('../.env');
 const mongoose = require('mongoose');
 
 /**
@@ -10,7 +12,7 @@ function databaseConnection() {
     mongoose.set('useFindAndModify', false);
     mongoose.set('useUnifiedTopology', true);
 
-    mongoose.connect("mongodb://localhost:27017/addressBook", {
+    mongoose.connect(URL, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false

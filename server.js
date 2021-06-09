@@ -1,10 +1,11 @@
+require('dotenv').config();
 const express = require('express');
 const databaseConnection = require('./config/dbConfig');
 const app = express();
 
 databaseConnection();
 
-//parsing the requests of content
+//parsing the requests from user
 app.use(express.urlencoded({
     extended: true
 }));
@@ -12,14 +13,14 @@ app.use(express.urlencoded({
 //parse the request from user
 app.use(express.json());
 
+require('./app/routes/addressBook')(app);
+
 //defining a simple root statement
 app.get('/', (req, res) => {
     res.send("<h1>Welcome to Address Book Backend App!</h1>");
 })
 
-require('./app/routes/addressBook')(app);
-
 //declaring a port number for server to run
-app.listen(8000, ()=>{
-    console.log("Server is up and running on port 8000");
+app.listen(PORT, ()=>{
+    console.log("Server is up and running!");
 })

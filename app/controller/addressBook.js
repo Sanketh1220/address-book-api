@@ -21,7 +21,7 @@ class AddressBookController {
 
         addressBookService.createAddressBook(addressBookData, (error, data) => {
             return ((error) ? res.status(500).send({success: false, message: "Some error occurred while creating contact to address book"}) : res.send({success: true, message: "Contact created successfully!", data: data}));
-        })
+        });
     }
 
     /**
@@ -42,9 +42,10 @@ class AddressBookController {
      */
     getDataByIdApi(req, res) {
         let addressBookId = req.params;
+        
         addressBookService.getDataById(addressBookId, (error, data) => {
             return ((error) ? res.status(500).send({success: false, message: "Some error occurred while retrieving address book"}) : res.send({success: true, message: "Address Book data successfully retrieved!", data: data}));
-        })
+        });
     }
 
     /**
@@ -54,7 +55,7 @@ class AddressBookController {
      */
     updateApi(req, res) {
         let addressBookId = req.params;
-        console.log(req.params);
+
         const addressBookData = {
             id: req.params.id,
             firstName: req.body.firstName,
@@ -69,7 +70,7 @@ class AddressBookController {
 
         addressBookService.updateAddressBook(addressBookId, addressBookData, (error, data) => {
             return ((error) ? res.status(500).send({success: false, message: "Some error occurred while updating address book"}) : res.send({ success: true, message: "Address book successfully updated!", data: data}));
-        })
+        });
     }
 
     /**
@@ -82,8 +83,9 @@ class AddressBookController {
 
         addressBookService.deleteAddressBook(addressBookData, (error, data) => {
             return ((error) ? res.status(500).send({success: false, message: "Some error occurred while deleting address book"}) : res.send({success: true, message: "Address book Deleted!", data: data}));
-        })
+        });
     }
 }
 
+//exporting the class to utilize or call function created in this class where ever it is imported
 module.exports = new AddressBookController();
