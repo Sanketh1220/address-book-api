@@ -1,6 +1,7 @@
 require('dotenv').config();
 require('../.env');
 const mongoose = require('mongoose');
+const logger = require('./logger');
 
 /**
  * @description function is written to connect app to mongo database
@@ -19,9 +20,9 @@ function databaseConnection() {
     });
 
     return mongoose.connection
-    .once('open', () => console.log("MongoDB is connected Successfully!"))
+    .once('open', () => logger.log("info", "MongoDB is connected Successfully!"))
     .on('error', (error) => {
-        console.log("Error while connecting to mongoDB is", error);
+        logger.log("error", "Error while connecting to mongoDB is", error);
     });
 }
 

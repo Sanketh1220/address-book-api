@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const databaseConnection = require('./config/dbConfig');
 const app = express();
+const logger = require('./config/logger');
 
 databaseConnection();
 
@@ -22,5 +23,5 @@ app.get('/', (req, res) => {
 
 //declaring a port number for server to run
 app.listen(PORT, ()=>{
-    console.log("Server is up and running!");
+    logger.log("info", "Server is up and running!");
 })
