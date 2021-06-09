@@ -28,4 +28,5 @@ If the installation was successful, you should be able to run the following comm
 
 ## npm start
 Runs the app
+
 Open http://localhost:8000 to view it in the browser.
