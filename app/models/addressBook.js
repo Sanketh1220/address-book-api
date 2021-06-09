@@ -39,7 +39,8 @@ const AddressBookSchema = new mongoose.Schema({
     },
 }, {
     //generates the time stamp the data has been added
-    timestamps: true
+    timestamps: true,
+    versionKey: false
 });
 
 const AddressBookInfoModel = mongoose.model("AddressBook", AddressBookSchema);
