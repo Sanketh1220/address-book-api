@@ -1,5 +1,7 @@
 const addressBookService = require('../services/addressBook');
 
+//declared a constant variable to assign a imported from middleware
+const {validateData} = require('../middleware/validation');
 class AddressBookController {
 
     /**
@@ -8,6 +10,13 @@ class AddressBookController {
      * @param {*} res 
      */
     createApi(req, res) {
+        var dataValidation = validateData.validate(req.body);
+        if(dataValidation.error) {
+            return res.status(400).send({
+                message: dataValidation.error.details[0].message
+            });
+        }
+
         const addressBookData = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -54,6 +63,13 @@ class AddressBookController {
      * @param {*} res 
      */
     updateApi(req, res) {
+        var dataValidation = validateData.validate(req.body);
+        if (dataValidation.error) {
+            return res.status(400).send({
+                message: dataValidation.error.details[0].message
+            });
+        }
+
         let addressBookId = req.params;
 
         const addressBookData = {

@@ -1,0 +1,144 @@
+{
+    "addressBookCreatePos": {
+        "firstName": "Goutham",
+        "lastName": "Raj",
+        "address": "4th avenue, Sainikpuri",
+        "city": "Hyderabad",
+        "state": "Telangana",
+        "zipCode": "500234",
+        "phoneNumber": "67405564545",
+        "email": "goutham.raj@gmail.com"
+    },
+
+    "resultOfAddressBookCreatePos": {
+        "statusCode": 200,
+        "success": true,
+        "message": "Address book successfully updated!",
+        "data": {
+            "_id": "60c03a51ac9b1b6a9b753f45",
+            "firstName": "Goutham",
+            "lastName": "Raj",
+            "address": "4th avenue, Sainikpuri",
+            "city": "Hyderabad",
+            "state": "Telangana",
+            "zipCode": "500234",
+            "phoneNumber": "67405564545",
+            "email": "goutham.raj@gmail.com",
+            "createdAt": "2021-06-09T03:49:37.795Z",
+            "updatedAt": "2021-06-09T12:44:11.486Z",
+            "__v": 0
+        }
+    },
+
+    "addressBookCreateNegFirstName": {
+        "firstName": "G",
+        "lastName": "Raj",
+        "address": "4th avenue, Sainikpuri",
+        "city": "Hyderabad",
+        "state": "Telangana",
+        "zipCode": "500234",
+        "phoneNumber": "67405564545",
+        "email": "goutham.raj@gmail.com"
+    },
+
+    "resultOfAddressBookCreateNegFirstName": {
+        "statusCode": 400,
+        "message": "\"firstName\" length must be at least 3 characters long"
+    },
+
+    "addressBookCreateNegLastName": {
+        "firstName": "Goutham",
+        "lastName": "",
+        "address": "4th avenue, Sainikpuri",
+        "city": "Hyderabad",
+        "state": "Telangana",
+        "zipCode": "500234",
+        "phoneNumber": "67405564545",
+        "email": "goutham.raj@gmail.com"
+    },
+
+    "resultOfAddressBookCreateNegLastName": {
+        "statusCode": 400,
+        "message": "\"lastName\" is not allowed to be empty"
+    },
+
+    "addressBookCreateNegAddress": {
+        "firstName": "Goutham",
+        "lastName": "Raj",
+        "address": "",
+        "city": "Hyderabad",
+        "state": "Telangana",
+        "zipCode": "500234",
+        "phoneNumber": "67405564545",
+        "email": "goutham.raj@gmail.com"
+    },
+
+    "resultOfAddressBookCreateNegAddress": {
+        "statusCode": 400,
+        "message": "\"address\" is not allowed to be empty"
+    },
+
+    "addressBookCreateNegCity": {
+        "firstName": "Badri",
+        "lastName": "Gowri",
+        "address": "1-23/25, Bandari",
+        "city": "K",
+        "state": "Andhra Pradesh",
+        "zipCode": "565015",
+        "phoneNumber": "67401204545",
+        "email": "badri.gowri@gmail.com"
+    },
+
+    "resultOfAddressBookCreateNegCity": {
+        "statusCode": 400,
+        "message": "\"city\" length must be at least 2 characters long"
+    },
+
+    "addressBookCreateNegState": {
+        "firstName": "Badri",
+        "lastName": "Gowri",
+        "address": "1-23/25, Bandari",
+        "city": "Kurnool",
+        "state": "",
+        "zipCode": "565015",
+        "phoneNumber": "67401204545",
+        "email": "badri.gowri@gmail.com"
+    },
+
+    "resultOfAddressBookCreateNegState": {
+        "statusCode": 400,
+        "message": "\"state\" is not allowed to be empty"
+    },
+
+    "addressBookCreateNegPhoneNumber": {
+        "firstName": "Badri",
+        "lastName": "Gowri",
+        "address": "1-23/25, Bandari",
+        "city": "Kurnool",
+        "state": "Andhra Pradesh",
+        "zipCode": "565015",
+        "phoneNumber": "6740120A4545",
+        "email": "badri.gowri@gmail.com"
+    },
+
+    "resultOfAddressBookCreateNegPhoneNumber": {
+        "statusCode": 400,
+        "message": "\"phoneNumber\" with value \"6740120A4545\" fails to match the required pattern: /^[0-9 ]{8,30}$/"
+    },
+
+    "addressBookCreateNegEmail": {
+        "firstName": "Badri",
+        "lastName": "Gowri",
+        "address": "1-23/25, Bandari",
+        "city": "Kurnool",
+        "state": "Andhra Pradesh",
+        "zipCode": "565015",
+        "phoneNumber": "67401204545",
+        "email": "badri.gowrigmail.com"
+    },
+
+    "resultOfAddressBookCreateNegEmail": {
+        "statusCode": 400,
+        "message": "\"email\" must be a valid email"
+    }
+}

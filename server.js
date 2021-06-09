@@ -25,3 +25,5 @@ app.get('/', (req, res) => {
 app.listen(PORT, ()=>{
     logger.log("info", "Server is up and running!");
 })
+
+module.exports = app;
