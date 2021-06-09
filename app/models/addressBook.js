@@ -39,7 +39,8 @@ const AddressBookSchema = new mongoose.Schema({
     },
 }, {
     //generates the time stamp the data has been added
-    timestamps: true
+    timestamps: true,
+    versionKey: false
 });
 
 const AddressBookInfoModel = mongoose.model("AddressBook", AddressBookSchema);
@@ -74,6 +75,49 @@ class AddressBookModel {
      */
     findAll(callBack) {
         AddressBookInfoModel.find({}, (error, data) => {
+            return((error) ? (callBack(error, null)) : (callBack(null, data)));
+        })
+    }
+
+    /**
+     * @description get data by id from address book
+     * @param {*} addressBookData 
+     * @param {*} callBack 
+     */
+    getDataById(addressBookData, callBack) {
+        AddressBookInfoModel.findById(addressBookData.addressBookId, (error, data) => {
+            return((error) ? (callBack(error, null)) : (callBack(null, data)));
+        })
+    }
+
+    /**
+     * @description function written to update info using ID
+     * @param {*} A valid addressBookId is expected
+     * @param {*} A valid addressBookData is expected
+     * @param {*} callBack 
+     */
+    updateInfo(addressBookId, addressBookData, callBack) {
+        AddressBookInfoModel.findByIdAndUpdate(addressBookId.addressBookId, {
+            firstName: addressBookData.firstName,
+            lastName: addressBookData.lastName,
+            address: addressBookData.address,
+            city: addressBookData.city,
+            state: addressBookData.state,
+            zipCode: addressBookData.zipCode,
+            phoneNumber: addressBookData.phoneNumber,
+            email: addressBookData.email
+        }, {new : true}, (error, data) => {
+            return((error) ? (callBack(error, null)) : (callBack(null, data)));
+        });
+    }
+
+    /**
+     * @description function written to delete data by ID
+     * @param {*} a valid addressBookData is expected
+     * @param {*} callBack 
+     */
+    deleteById(addressBookData, callBack) {
+        AddressBookInfoModel.findByIdAndRemove(addressBookData.addressBookId, (error, data) => {
             return((error) ? (callBack(error, null)) : (callBack(null, data)));
         })
     }
