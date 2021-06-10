@@ -1,20 +1,29 @@
 const addressBookController = require('../controller/addressBook');
+const userController = require('../controller/user');
+const tokenCheck = require('../middleware/helper');
+
 
 //exporting it to server.js
 module.exports = (app) => {
 
-    // create API post request
-    app.post('/addressBook/create', addressBookController.createApi);
+    //registration api POST request
+    app.post('/user/register', userController.registrationApi);
 
-    // retrieve all data API
-    app.get('/addressBook', addressBookController.getAllDataApi);
+    //login api POST request
+    app.post('/user/login', userController.loginApi);
 
-    // retrieve one address book using ID
-    app.get('/addressBook/:addressBookId', addressBookController.getDataByIdApi);
+    //create API post request
+    app.post('/addressBook/create', tokenCheck.tokenChecker, addressBookController.createApi);
 
-    // updating a address book using ID
-    app.put('/addressBook/update/:addressBookId', addressBookController.updateApi);
+    //retrieve all data API
+    app.get('/addressBook', tokenCheck.tokenChecker, addressBookController.getAllDataApi);
 
-    // deleting an address book using ID
-    app.delete('/addressBook/delete/:addressBookId', addressBookController.deleteApi);
+    //retrieve one address book using ID
+    app.get('/addressBook/:addressBookId', tokenCheck.tokenChecker, addressBookController.getDataByIdApi);
+
+    //updating a address book using ID
+    app.put('/addressBook/update/:addressBookId', tokenCheck.tokenChecker, addressBookController.updateApi);
+
+    //deleting an address book using ID
+    app.delete('/addressBook/delete/:addressBookId', tokenCheck.tokenChecker, addressBookController.deleteApi);
 }
