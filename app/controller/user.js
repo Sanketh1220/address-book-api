@@ -1,3 +1,4 @@
+const mongoose = require('mongoose')
 const userService = require('../services/user');
 
 const {userDataValidation} = require('../middleware/validation');

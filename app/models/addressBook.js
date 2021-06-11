@@ -5,12 +5,14 @@ const AddressBookSchema = new mongoose.Schema({
     firstName: {
         type: String,
         required: true,
-        validate: /^[a-zA-Z ]{2,30}$/
+        validate: /^[a-zA-Z ]{2,30}$/,
+        unique: true
     },
     lastName: {
         type: String,
         required: true,
-        validate: /^[a-zA-Z ]{2,30}$/
+        validate: /^[a-zA-Z ]{2,30}$/,
+        unique: true
     },
     address: {
         type: String,

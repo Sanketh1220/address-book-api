@@ -1,22 +1,27 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
+const { example } = require("yargs");
+const { c } = require("tar");
 const SALT_WORK_FACTOR = 10;
 
 const UserInfoSchema = new mongoose.Schema({
     firstName: {
         type: String,
         required: true,
-        validate: /^[a-zA-Z ]{2,30}$/ 
+        validate: /^[a-zA-Z ]{2,30}$/,
+        unique: true
     },
     lastName: {
         type: String,
         required: true,
-        validate: /^[a-zA-Z]{2,30}$/
+        validate: /^[a-zA-Z]{2,30}$/,
+        unique: true
     },
     email: {
         type: String,
         required: true,
-        validate: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+        validate: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+        unique: true
     },
     password: {
         type: String,
@@ -70,16 +75,26 @@ class UserModel {
      * @param {*} callBack 
      */
     createInfo(userData, callBack) {
-        const user = new UserInfoModel ({
-            firstName: userData.firstName,
-            lastName: userData.lastName,
-            email: userData.email,
-            password: userData.password
-        });
 
-        user.save({}, (error, data) => {
-            return((error) ? (callBack(error, null)) : (callBack(null, data)));
-        })
+        var query = userData.email;
+        UserInfoModel.findOne({email:query}, (error, example) => {
+            if(error) callBack(error, null);
+            if(example){
+                return callBack ("This user is already registered, Please sign in!", null)
+            }
+            else {
+                const user = new UserInfoModel ({
+                    firstName: userData.firstName,
+                    lastName: userData.lastName,
+                    email: userData.email,
+                    password: userData.password
+                });
+        
+                user.save({}, (error, data) => {
+                    return((error) ? (callBack(error, null)) : (callBack(null, data)));
+                })
+            }
+        });
     }
 
     /**
